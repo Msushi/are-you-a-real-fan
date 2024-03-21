@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Are You A Real Fan?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="src/script.js"></script>
+  </head>
+  <body>
+    <section id="homepage" class="page">
+      <h1>Are You A Real Fan?</h1>
+      <div id="select-artist">
+        <input type="text" placeholder="Artist Name" id="input-artist">
+        <button id="submit-artist">submit</button>
+        <p id="artist-exists"></p>
+      </div>
+    </section> 
+    
+    <section id="game" class="page" style="display: none;">
+      <div id="track-game" style="display: none;" >
+        <h3>So you're a fan of <span id="artist-name"></span>?</h3>
+        <h3>Name five of their songs.</h3>
+        <input type="text" id="input-track">
+        <button id="submit-track">submit</button>
+        <p id="track-notif"></p>
+        <ul>
+          <li><span id="track-1"></span></li>
+          <li><span id="track-2"></span></li>
+          <li><span id="track-3"></span></li>
+          <li><span id="track-4"></span></li>
+          <li><span id="track-5"></span></li>
+        </ul>
+      </div>
+      <div id="album-game" style="display: none;">
+        <p>Okay, so you know some songs...</p>
+        <p>But only a real fan would recognize THIS album:</p>
+        <img id="album-image" src="">
+        <p>What is the name of this album?</p>
+        <input type="text" id="input-album">
+        <button id="submit-album">submit</button>
+        <p id="album-notif"></p>
+      </div>
+    </section>
+    
+    <section id="good-end" class="page" style="display: none;">
+      <div id="end">
+        <p>wow, you really are a fan of <span id="artist-name1"></span>.</p>
+      </div>
+    </section>
+    
+    
+  
+  </body>
+</html>
