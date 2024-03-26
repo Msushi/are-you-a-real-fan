@@ -10,9 +10,9 @@
   <body>
     <section id="homepage" class="page">
       <h1 class="title-text">Are You A Real Fan?</h1>
-      <p>How much do you really know about your favorite music artists?</p>
+      <p class="no-margin">How much do you really know about your favorite music artists?</p>
       <p>Login with <button id="lastfm-login">Last.fm</button></p>
-      <p>or <button id="manual-artist">select an artist manually</button></p>
+      <p>or <button id="manual-artist" class="discrete-button">select an artist manually</button></p>
       <div id="manual-artist-select" style="display: none;">
         <input type="text" placeholder="Artist Name" id="input-artist">
         <button id="submit-artist">submit</button>
@@ -21,14 +21,17 @@
     </section> 
     
     <section id="track-game" class="page" style="display: none;">
-      <h3>So you're a fan of <span id="artist-name"></span>?</h3>
-      <img id="artist-image" src="">
-      <h3>You have 60 seconds</h3>
-      <h3>Name five of their songs.</h3>
-      <input type="text" id="input-track">
-      <button id="submit-track">submit</button>
+      <h3>So you're a fan of <span id="artist-name" class="accent-color"></span>?</h3>
+      <img id="artist-image" class ="art" src="">
+      <h3 class="instruction-text">Name five of their songs.</h3>
+      <h3 class="countdown-text">You have <span id="seconds" class="accent-color">60</span> seconds</h3>
+      <div class="input-field">
+        <input type="text" id="input-track" class="game-input">
+        <button id="submit-track">submit</button>
+      </div>
+      
       <p id="track-notif"></p>
-      <ul>
+      <ul id="track-list">
         <li><span id="track-1"></span></li>
         <li><span id="track-2"></span></li>
         <li><span id="track-3"></span></li> 
@@ -40,9 +43,9 @@
     <section id="album-game" class="page" style="display: none;">
       <p>Okay, so you know some songs...</p>
       <p>But only a real fan would recognize THIS album:</p>
-      <img id="album-image" src="">
-      <p>What is the name of this album?</p>
-      <input type="text" id="input-album">
+      <img id="album-image" src="" class ="art">
+      <p class="instruction-text">What is the name of this album?</p>
+      <input type="text" id="input-album" class="game-input">
       <button id="submit-album">submit</button>
       <p id="album-notif"></p>
     </section>

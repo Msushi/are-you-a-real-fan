@@ -4,11 +4,11 @@ let artistid = "";
 let trackList = [];
 let numOfTracks = 0;
 let albumName = "";
+let artistImage = "";
 
 document.addEventListener('DOMContentLoaded', function () {
     const manualButton = document.getElementById("manual-artist");
-    manualButton?.addEventListener('click', async function() {
-        console.log("test")
+    manualButton?.addEventListener('click', function() {
         document.getElementById("manual-artist-select").style.display = "flex";
     })
 });
@@ -41,12 +41,16 @@ async function startTrackQuiz() {
         const artistExists = doesArtistExist(artist, artistSearchData);
         if (artistExists[0]) {
             artistid = artistExists[1];
-            const artistInfo = await fetchArtistInfo(artistExists[1], apiKey);
+            let albumData = await fetchArtistAlbums(artistid, apiKey);
+            console.log(albumData);
+            artistImage = getMostPopularAlbumImage(albumData)
+            document.getElementById("artist-image").src = artistImage;
             const artistTracksData = await fetchArtistTracks(artistExists[1], apiKey);
             trackList = getTrackNames(artistTracksData);
             document.getElementById("artist-name").textContent = artistName;
             document.getElementById("track-game").style.display = "flex";
             document.getElementById("homepage").style.display = "none";
+            const timer = setInterval(updateSeconds, 1000);
         }
         else {
             document.getElementById("artist-exists").textContent = `We can't find an aritst named ${artist}. Make sure you spelled their name right and try again.`
@@ -131,13 +135,23 @@ async function fetchArtistAlbums(artistid, apiKey) {
 function selectRandomAlbum(albumData) {
     if (albumData.topalbums.album) {
         const albums = albumData.topalbums.album;
-        const randomIndex = Math.floor(Math.random() * albums.length);
+        const randomIndex = Math.floor(Math.random() * albums.length-1)+1;
         const albumName = albums[randomIndex].name;
         const albumImageArr = albums[randomIndex].image;
         const albumImage = albumImageArr[albumImageArr.length - 1];
         return [albumName, albumImage];
     }
     return ["", ""];
+}
+
+function getMostPopularAlbumImage(albumData) {
+    if (albumData.topalbums.album) {
+        const albums = albumData.topalbums.album;
+        const albumImageArr = albums[0].image;
+        const retImg = albumImageArr[albumImageArr.length - 1];
+        return retImg["#text"];
+    }
+    return "";
 }
 function getTrackNames(trackData) {
     let ret = [];
@@ -169,4 +183,15 @@ async function startAlbumQuiz() {
     document.getElementById("album-image").src = albumImage;
     document.getElementById("track-game").style.display = "none";
     document.getElementById("album-game").style.display = "block";
+}
+
+
+function updateSeconds() {
+    const secondsSpan = document.getElementById('seconds');
+    let seconds = parseInt(secondsSpan.textContent);
+    seconds--;
+    secondsSpan.textContent = seconds;
+    if (seconds == 0) {
+        console.log("ZERO!")
+    }
 }

@@ -4,15 +4,18 @@
 
 html, body {
     height: 100%;
+    margin: 0;
 }
-html {
-    display: table;
-    margin: auto;
+
+button {
+    cursor: pointer;
 }
+
 body {
-    background-color: lavender;
-    display: table-cell;
-    vertical-align: middle;
+    background: lavender;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
 } 
 .title-text {
     font-size: 4rem;
@@ -26,4 +29,39 @@ body {
 }
 #album-image {
     filter: blur(8px);
+}
+#track-list {
+    padding: 0;
+}
+.no-margin {
+    margin: 0;
+}
+.discrete-button {
+    background: none;
+    border: none;
+    text-decoration: underline;
+}
+.accent-color {
+    color: red;
+}
+.art {
+    filter: drop-shadow(10px 10px 4px #000000);
+    padding-bottom: 10px;
+}
+.game-input {
+    font-size: 2rem;
+    text-align: center;
+}
+.instruction-text {
+    margin-bottom: 0;
+}
+.countdown-text {
+    margin-top: 0;
+}
+.input-field {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 2px solid black;
 }
