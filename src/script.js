@@ -5,10 +5,18 @@ let trackList = [];
 let numOfTracks = 0;
 let albumName = "";
 
+document.addEventListener('DOMContentLoaded', function () {
+    const manualButton = document.getElementById("manual-artist");
+    manualButton?.addEventListener('click', async function() {
+        console.log("test")
+        document.getElementById("manual-artist-select").style.display = "flex";
+    })
+});
+
 //Artist Button
 document.addEventListener('DOMContentLoaded', function () {
-    const myButton = document.getElementById("submit-artist");
-    myButton?.addEventListener('click', async function() {
+    const artistButton = document.getElementById("submit-artist");
+    artistButton?.addEventListener('click', async function() {
         startTrackQuiz();
     })
 });
@@ -37,9 +45,8 @@ async function startTrackQuiz() {
             const artistTracksData = await fetchArtistTracks(artistExists[1], apiKey);
             trackList = getTrackNames(artistTracksData);
             document.getElementById("artist-name").textContent = artistName;
-            document.getElementById("game").style.display = "block";
-            document.getElementById("track-game").style.display = "block";
-            document.getElementById("select-artist").style.display = "none";
+            document.getElementById("track-game").style.display = "flex";
+            document.getElementById("homepage").style.display = "none";
         }
         else {
             document.getElementById("artist-exists").textContent = `We can't find an aritst named ${artist}. Make sure you spelled their name right and try again.`
