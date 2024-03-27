@@ -49,8 +49,8 @@ body {
     padding-bottom: 10px;
 }
 .game-input {
-    font-size: 2rem;
-    text-align: center;
+    font-size: 1.5rem;
+    text-align: left;
 }
 .instruction-text {
     margin-bottom: 0;
@@ -64,4 +64,22 @@ body {
     overflow: hidden;
     border-radius: 1rem;
     border: 2px solid black;
+    background-color: white;
+}
+.input-field input, button {
+    border: 0;
+    background-color: transparent;
+    outline: none;
+}
+.input-field svg {
+
+}
+
+#title {
+    justify-content: center;
+    text-align: center;
+}
+#login {
+    text-align: center;
+    padding-top: 2rem;
 }

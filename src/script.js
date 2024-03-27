@@ -35,6 +35,13 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 });
 
+$(document).ready(function(){
+    $('input-track').keypress(function(e){
+      if(e.keyCode==13)
+      $('submit-track').click();
+    });
+});
+
 async function startTrackQuiz() {
     const artist = document.getElementById("input-artist").value;
         const artistSearchData = await fetchArtistSearch(artist, apiKey);
